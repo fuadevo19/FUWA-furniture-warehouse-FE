@@ -1,35 +1,50 @@
-# fuwa-ms-dashboard
+# Fuwa-MS-Dashboard
 
-This template should help get you started developing with Vue 3 in Vite.
+## Table of Contents
 
-## Recommended IDE Setup
+- [How to Run](#how-to-run)
+- [Explain Structure](#explain-structure)
+  - [Pages](#pages)
+  - [Queries](#queries)
+  - [Components](#components)
+  - [Assets](#assets)
+  - [Router](#router)
+- [Example](#example)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## How to Run
 
-## Customize configuration
+To run the Fuwa-MS-Dashboard locally, follow these steps:
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+1. Clone this repository to your local machine.
+2. Navigate to the project directory in your terminal.
+3. Run the following command:
+   ```
+   npm run dev
+   ```
+4. Open your web browser and go to `http://localhost:3000`.
 
-## Project Setup
+## Project Structure
 
-```sh
-npm install
-```
+### Pages
 
-### Compile and Hot-Reload for Development
+The `pages` directory is where the page files are stored. For example, `homepage.vue` would be found here.
 
-```sh
-npm run dev
-```
+### Queries
 
-### Compile and Minify for Production
+The `queries` directory is where all API calls are stored. For example, `posts.ts` would be found here.
 
-```sh
-npm run build
-```
+### Components
 
-### Lint with [ESLint](https://eslint.org/)
+The `components` directory is where we store reusable components. For example, `Footer.vue`, `Homepage.vue`, etc.
 
-```sh
-npm run lint
-```
+### Assets
+
+The `assets` directory is where we store static assets like images, fonts, etc.
+
+### Router
+
+The `router` directory is where we define our routes and place the page components.
+
+## Example
+
+For example usage, you can check `Example.vue` for data fetching implementation.
