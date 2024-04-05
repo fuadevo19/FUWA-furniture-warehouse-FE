@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Homepage from '@/pages/Homepage.vue'
 import Example from '@/pages/Example.vue'
+import Login from '@/pages/Login.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -14,8 +15,25 @@ const router = createRouter({
       path: '/example',
       name: 'example',
       component: Example
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login
     }
   ]
 })
+
+// router.beforeEach((to) => {
+//   const isAuthenticated = localStorage.getItem('token')
+//   if (
+//     !isAuthenticated &&
+//     // ❗️ Avoid an infinite redirect
+//     to.path !== '/login'
+//   ) {
+//     // redirect the user to the login page
+//     return { path: '/login' }
+//   }
+// })
 
 export default router
