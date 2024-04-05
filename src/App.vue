@@ -1,9 +1,10 @@
 <script setup>
-import Layout from './components/Layout.vue'
+import Header from '@/components/Header.vue'
+const publicRoutes = ['/login']
+const isPublic = publicRoutes.includes(window.location.pathname)
 </script>
 
 <template>
-  <Layout>
-    <RouterView />
-  </Layout>
+  <Header v-if="!isPublic" />
+  <RouterView />
 </template>

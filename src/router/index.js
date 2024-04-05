@@ -23,16 +23,16 @@ const router = createRouter({
     }
   ]
 })
-
 // router.beforeEach((to) => {
 //   const isAuthenticated = localStorage.getItem('token')
+
 //   if (
 //     !isAuthenticated &&
 //     // ❗️ Avoid an infinite redirect
 //     to.path !== '/login'
 //   ) {
 //     // redirect the user to the login page
-//     return { path: '/login' }
+//     return { name: '/login' }
 //   }
 // })
 
