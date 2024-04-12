@@ -1,5 +1,5 @@
 <script setup>
-import Header from '@/components/Header.vue'
+// import Header from '@/components/Header.vue'
 const publicRoutes = ['/login']
 const isPublic = publicRoutes.includes(window.location.pathname)
 </script>
