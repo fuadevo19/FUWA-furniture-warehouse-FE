@@ -6,7 +6,7 @@
     >
       <!-- Sidebar content here -->
       <div class="sidebar-top flex flex-col items-start">
-        <img class="w-[175px] h-[60px] rounded-2xl mb-7" :src="logo" alt="fuwa-ms" />
+        <img class="w-[175px] h-[60px] rounded-2xl mb-6 mt-3" :src="logo" alt="fuwa-ms" />
         <nav class="flex flex-col justify-between w-full h-full text-base">
           <RouterLink
             class="flex items-center p-2 rounded hover:bg-[#F4EFFD]"
