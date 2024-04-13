@@ -4,9 +4,9 @@
     <Sidebar />
     <div class="drawer-content flex flex-col">
       <!-- Page content here -->
-      <div class="bg-[#D9D9D9] min-h-full">
+      <div class="bg-white min-h-full">
         <label for="my-drawer-2" class="btn btn-primary drawer-button md:hidden">Open drawer</label>
-        <h1>2</h1>
+        <h1>homepage</h1>
       </div>
     </div>
   </div>
@@ -14,6 +14,7 @@
 
 <script>
 import Sidebar from '@/components/Sidebar.vue'
+import { useRoute } from 'vue-router'
 export default {
   components: {
     Sidebar
