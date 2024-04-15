@@ -5,4 +5,16 @@
 *,
 body {
   font-family: 'Poppins', sans-serif;
+  color: black;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+h1 {
+  font-family: Arial, Helvetica, sans-seri;
+  font-weight: bold;
+  font-size: 40px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
