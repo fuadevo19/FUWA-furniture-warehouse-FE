@@ -19,7 +19,6 @@
         <!-- head -->
         <thead>
           <tr>
-            <th></th>
             <th>No</th>
             <th>Tanggal dan Waktu</th>
             <th>Inbound ID</th>
@@ -37,10 +36,9 @@
             <td>IB123456</td>
             <td>REF7890</td>
             <td>SUP001</td>
-            <td>Shipped</td>
+            <td>DONE QC</td>
             <td>
-              <button>Edit</button>
-              <button>Delete</button>
+              <button class="btn btn-bordered btn-sm">Detail</button>
             </td>
           </tr>
         </tbody>
