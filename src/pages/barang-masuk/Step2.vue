@@ -1,7 +1,7 @@
 <script></script>
 
 <template>
-  <div class="bg-white min-h-full p-4 mt-10 max-w-5xl space-y-4">
+  <div class="bg-white p-4 mt-10 max-w-5xl space-y-4">
     <section class="flex justify-between items-center">
       <div>
         <h2 class="font-bold text-lg">List Barang</h2>

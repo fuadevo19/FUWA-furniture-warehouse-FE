@@ -15,7 +15,13 @@ const nextStep = () => {
 
 <template>
   <div class="bg-white min-h-full p-6 mt-10 max-w-5xl space-y-2">
-    <h1 class="text-center text-2xl font-bold text-secondary">Masukkan Informasi Barang Masuk</h1>
+    <h1 class="text-center text-2xl font-bold text-secondary">
+      {{
+        currentStep === 2
+          ? 'Print dan tempelkan label pada kemasan'
+          : 'Masukkan Informasi Barang Masuk'
+      }}
+    </h1>
 
     <Step1 v-if="currentStep === 0" />
     <Step2 v-else-if="currentStep === 1" />
@@ -23,7 +29,9 @@ const nextStep = () => {
 
     <div>
       <div @click="nextStep" class="w-fit ml-auto">
-        <button class="btn btn-md btn-secondary mt-10">Selanjutnya</button>
+        <button class="btn btn-md btn-secondary mt-10">
+          {{ currentStep === 2 ? 'Submit' : 'Selanjutnya' }}
+        </button>
       </div>
     </div>
   </div>
