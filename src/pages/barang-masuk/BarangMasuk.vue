@@ -1,6 +1,8 @@
 <template>
   <div class="bg-white min-h-full p-4 mt-10 max-w-5xl space-y-4">
-    <button class="btn btn-md btn-secondary">Penerimaan barang baru</button>
+    <a href="/barang-masuk/new">
+      <button class="btn btn-md btn-secondary">Penerimaan barang baru</button></a
+    >
     <h1 class="text-4xl font-bold">Barang Masuk</h1>
     <div class="flex space-x-4">
       <select name="search-by" class="select select-bordered">

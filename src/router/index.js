@@ -3,6 +3,7 @@ import Homepage from '@/pages/Homepage.vue'
 import Login from '@/pages/Login.vue'
 import PageProduk from '@/pages/PageProduk.vue'
 import BarangMasuk from '@/pages/barang-masuk/BarangMasuk.vue'
+import BarangMasukBaru from '@/pages/barang-masuk/BarangMasukBaru.vue'
 import Detail from '@/pages/barang-masuk/Detail.vue'
 
 const router = createRouter({
@@ -27,6 +28,11 @@ const router = createRouter({
       path: '/barang-masuk/detail',
       name: 'detail-barang-masuk',
       component: Detail
+    },
+    {
+      path: '/barang-masuk/new',
+      name: 'barang-masuk-baru',
+      component: BarangMasukBaru
     },
     {
       path: '/',
