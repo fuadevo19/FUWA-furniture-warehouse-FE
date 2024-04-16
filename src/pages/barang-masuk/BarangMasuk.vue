@@ -38,7 +38,9 @@
             <td>SUP001</td>
             <td>DONE QC</td>
             <td>
-              <button class="btn btn-bordered btn-sm">Detail</button>
+              <a href="/barang-masuk/detail?id=1">
+                <button class="btn btn-bordered btn-sm">Detail</button></a
+              >
             </td>
           </tr>
         </tbody>
