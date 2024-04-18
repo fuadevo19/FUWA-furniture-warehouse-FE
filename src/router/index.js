@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Homepage from '@/pages/Homepage.vue'
+import Homepage from '@/pages/homepage/Index.vue'
 import Login from '@/pages/Login.vue'
 import PageProduk from '@/pages/PageProduk.vue'
 import DetailProduk from '@/pages/DetailProduk.vue'
-import BarangKeluar from '@/pages/barang-keluar/index.vue'
+import BarangKeluar from '@/pages/barang-keluar/Index.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
