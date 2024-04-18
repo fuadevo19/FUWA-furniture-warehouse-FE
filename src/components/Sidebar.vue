@@ -11,13 +11,17 @@
             :to="{ name: 'home' }"
             ><img :src="iconHome" alt="icon-nav" class="mr-[16px]" />Home</RouterLink
           >
-          <RouterLink class="flex items-center p-3 rounded hover:bg-[#F4EFFD]" :to="{ name: '' }"
+          <RouterLink
+            class="flex items-center p-3 rounded hover:bg-[#F4EFFD]"
+            :to="{ name: 'produk' }"
             ><img :src="iconProduk" alt="icon-nav" class="mr-[16px]" />Produk</RouterLink
           >
           <RouterLink class="flex items-center p-3 rounded hover:bg-[#F4EFFD]" :to="{ name: '' }"
             ><img :src="iconProduk" alt="icon-nav" class="mr-[16px]" />Barang Masuk</RouterLink
           >
-          <RouterLink class="flex items-center p-3 rounded hover:bg-[#F4EFFD]" :to="{ name: '' }"
+          <RouterLink
+            class="flex items-center p-3 rounded hover:bg-[#F4EFFD]"
+            :to="{ name: 'barangkeluar' }"
             ><img :src="iconBarangKeluar" alt="icon-nav" class="mr-[16px]" />Barang
             Keluar</RouterLink
           >

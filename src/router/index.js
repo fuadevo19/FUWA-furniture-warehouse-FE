@@ -3,6 +3,7 @@ import Homepage from '@/pages/Homepage.vue'
 import Login from '@/pages/Login.vue'
 import PageProduk from '@/pages/PageProduk.vue'
 import DetailProduk from '@/pages/DetailProduk.vue'
+import BarangKeluar from '@/pages/barang-keluar/index.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +27,11 @@ const router = createRouter({
       path: '/detailproduk',
       name: 'detailproduk',
       component: DetailProduk
+    },
+    {
+      path: '/barangkeluar',
+      name: 'barangkeluar',
+      component: BarangKeluar
     }
   ]
 })
