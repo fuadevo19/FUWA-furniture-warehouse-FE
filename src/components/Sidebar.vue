@@ -1,5 +1,5 @@
 <template>
-  <div class="drawer-side" style="box-shadow: 0px 6px 12px 0px rgba(41, 41, 41, 0.08)">
+  <div class="drawer-side z-10" style="box-shadow: 0px 6px 12px 0px rgba(41, 41, 41, 0.08)">
     <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
     <div class="menu p-4 w-64 lg:w-80 min-h-full bg-white text-base-content justify-between">
       <!-- Sidebar content here -->
