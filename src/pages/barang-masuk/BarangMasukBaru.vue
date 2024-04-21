@@ -6,6 +6,11 @@ import Step3 from './Step3.vue'
 
 const currentStep = ref(0)
 const selectedItems = ref([])
+const payload = ref({
+  date: '',
+  reference_number: '',
+  supplier_id: ''
+})
 
 const handleAddItem = (item) => {
   if (!selectedItems.value.find((product) => product.id === item.id)) {
@@ -23,6 +28,16 @@ const nextStep = () => {
     currentStep.value++
   }
 }
+const disableForm = () => {
+  if (currentStep.value === 0 && Object.values(payload.value).some((item) => item === '')) {
+    return true
+  }
+  if (currentStep.value === 1 && !selectedItems.value.length) {
+    return true
+  }
+  return false
+}
+console.log(disableForm())
 </script>
 
 <template>
@@ -35,7 +50,7 @@ const nextStep = () => {
       }}
     </h1>
 
-    <Step1 v-if="currentStep === 0" />
+    <Step1 :payload="payload" v-if="currentStep === 0" />
     <Step2
       :handleAddItem="handleAddItem"
       :handleRemoveItem="handleRemoveItem"
@@ -45,8 +60,11 @@ const nextStep = () => {
     <Step3 v-else-if="currentStep === 2" />
 
     <div>
-      <div @click="nextStep" class="w-fit ml-auto">
-        <button class="btn btn-md btn-secondary mt-10">
+      <div class="w-fit ml-auto">
+        <button
+          @click="nextStep"
+          :class="`btn btn-md btn-secondary mt-10 ${disableForm() && ' btn-disabled'}`"
+        >
           {{ currentStep === 2 ? 'Submit' : 'Selanjutnya' }}
         </button>
       </div>
