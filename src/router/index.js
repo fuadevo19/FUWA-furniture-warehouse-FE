@@ -5,6 +5,7 @@ import PageProduk from '@/pages/PageProduk.vue'
 import BarangMasuk from '@/pages/barang-masuk/BarangMasuk.vue'
 import BarangMasukBaru from '@/pages/barang-masuk/BarangMasukBaru.vue'
 import Detail from '@/pages/barang-masuk/Detail.vue'
+import DetailProduk from '@/pages/DetailProduk.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -38,6 +39,11 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: Homepage
+    },
+    {
+      path: '/detailproduk',
+      name: 'detailproduk',
+      component: DetailProduk
     }
   ]
 })
