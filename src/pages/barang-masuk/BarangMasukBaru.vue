@@ -4,12 +4,13 @@ import Step1 from './Step1.vue'
 import Step2 from './Step2.vue'
 import Step3 from './Step3.vue'
 
-const currentStep = ref(0)
-const selectedItems = ref([])
-const payload = ref({
+let currentStep = ref(0)
+let selectedItems = ref([])
+let payload = ref({
   date: '',
   reference_number: '',
-  supplier_id: ''
+  supplier_id: '',
+  selectedItems
 })
 
 const handleAddItem = (item) => {
@@ -37,7 +38,6 @@ const disableForm = () => {
   }
   return false
 }
-console.log(disableForm())
 </script>
 
 <template>
@@ -57,7 +57,7 @@ console.log(disableForm())
       :selectedItems="selectedItems"
       v-else-if="currentStep === 1"
     />
-    <Step3 v-else-if="currentStep === 2" />
+    <Step3 :payload="payload" v-else-if="currentStep === 2" />
 
     <div>
       <div class="w-fit ml-auto">
