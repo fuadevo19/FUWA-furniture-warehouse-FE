@@ -16,7 +16,9 @@
             :to="{ name: 'produk' }"
             ><img :src="iconProduk" alt="icon-nav" class="mr-[16px]" />Produk</RouterLink
           >
-          <RouterLink class="flex items-center p-3 rounded hover:bg-[#F4EFFD]" :to="{ name: '' }"
+          <RouterLink
+            class="flex items-center p-3 rounded hover:bg-[#F4EFFD]"
+            :to="{ name: 'barang-masuk' }"
             ><img :src="iconProduk" alt="icon-nav" class="mr-[16px]" />Barang Masuk</RouterLink
           >
           <RouterLink

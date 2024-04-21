@@ -2,6 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Homepage from '@/pages/homepage/Index.vue'
 import Login from '@/pages/Login.vue'
 import PageProduk from '@/pages/PageProduk.vue'
+import BarangMasuk from '@/pages/barang-masuk/BarangMasuk.vue'
+import BarangMasukBaru from '@/pages/barang-masuk/BarangMasukBaru.vue'
+import Detail from '@/pages/barang-masuk/Detail.vue'
 import DetailProduk from '@/pages/DetailProduk.vue'
 import BarangKeluar from '@/pages/barang-keluar/Index.vue'
 
@@ -17,6 +20,21 @@ const router = createRouter({
       path: '/produk',
       name: 'produk',
       component: PageProduk
+    },
+    {
+      path: '/barang-masuk',
+      name: 'barang-masuk',
+      component: BarangMasuk
+    },
+    {
+      path: '/barang-masuk/detail',
+      name: 'detail-barang-masuk',
+      component: Detail
+    },
+    {
+      path: '/barang-masuk/new',
+      name: 'barang-masuk-baru',
+      component: BarangMasukBaru
     },
     {
       path: '/',
