@@ -5,6 +5,18 @@ import Step2 from './Step2.vue'
 import Step3 from './Step3.vue'
 
 const currentStep = ref(0)
+const selectedItems = ref([])
+
+const handleAddItem = (item) => {
+  if (!selectedItems.value.find((product) => product.id === item.id)) {
+    selectedItems.value.push(item)
+  } else {
+    alert('Produk sudah ada, silahkan hapus produk sebelum menambahkan lagi')
+  }
+}
+const handleRemoveItem = (index) => {
+  selectedItems.value = selectedItems.value.filter((_, itemIndex) => itemIndex !== index)
+}
 
 const nextStep = () => {
   if (currentStep.value < 2) {
@@ -24,7 +36,12 @@ const nextStep = () => {
     </h1>
 
     <Step1 v-if="currentStep === 0" />
-    <Step2 v-else-if="currentStep === 1" />
+    <Step2
+      :handleAddItem="handleAddItem"
+      :handleRemoveItem="handleRemoveItem"
+      :selectedItems="selectedItems"
+      v-else-if="currentStep === 1"
+    />
     <Step3 v-else-if="currentStep === 2" />
 
     <div>
