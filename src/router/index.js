@@ -60,7 +60,7 @@ const router = createRouter({
     },
     {
       path: '/barang-keluar/newdetail',
-      name: 'barangkeluarbaru',
+      name: 'barangkeluarbarudetail',
       component: BarangKeluarBaruDetail
     }
   ]
