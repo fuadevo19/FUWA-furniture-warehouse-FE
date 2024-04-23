@@ -1,8 +1,12 @@
 <template>
-  <div class="bg-white min-h-full md:px-9">
-    <label for="my-drawer-2" class="btn btn-primary drawer-button md:hidden">Open drawer</label>
+  <div class="bg-white min-h-full px-9">
+    <label for="my-drawer-2" class="btn btn-primary drawer-button md:hidden mt-6"
+      >Open drawer</label
+    >
     <div class="mt-3 md:mt-[70px] md:mb-[26px]">
-      <button class="btn btn-secondary px-8 py-4">Barang Keluar Baru +</button>
+      <RouterLink class="btn btn-secondary px-8 py-4" :to="{ name: 'barangkeluarbaru' }"
+        >Barang Keluar Baru +</RouterLink
+      >
     </div>
     <h1 class="text-3xl font-normal">Permintaan Pengiriman (Barang Keluar)</h1>
     <div class="flex py-4 gap-4">
@@ -62,7 +66,7 @@
                 Ready to Pick
               </div>
             </td>
-            <td><button class="btn btn-xs btn-outline font-medium">Details</button></td>
+            <td><button class="btn btn-xs btn-outline font-medium">Detail</button></td>
           </tr>
           <!-- row 2 -->
           <tr>
