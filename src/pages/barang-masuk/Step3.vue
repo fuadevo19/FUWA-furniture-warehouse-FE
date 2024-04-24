@@ -1,8 +1,11 @@
 <script setup>
-import { defineProps, ref } from 'vue'
+import { ref } from 'vue'
 import QrcodeVue from 'qrcode.vue'
+import { useBarangMasukStore } from '@/stores/barang-masuk'
+import { storeToRefs } from 'pinia'
 
-const props = defineProps(['payload'])
+const store = useBarangMasukStore()
+const { data } = storeToRefs(store)
 
 const printableContent = ref(null)
 const printContent = () => {
@@ -23,11 +26,7 @@ const printContent = () => {
 <template>
   <div>
     <div ref="printableContent">
-      <div
-        v-for="product in props.payload.selectedItems"
-        :key="product.id"
-        class="flex gap-4 my-10 p-4"
-      >
+      <div v-for="product in data.selectedItems" :key="product.id" class="flex gap-4 my-10 p-4">
         <QrcodeVue render-as="svg" :value="product.sku" size="100" level="H" />
         <ul>
           <li>{{ product.sku }}</li>
