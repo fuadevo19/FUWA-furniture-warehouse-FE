@@ -1,8 +1,12 @@
 <template>
-  <div class="bg-white min-h-full md:px-9">
-    <label for="my-drawer-2" class="btn btn-primary drawer-button md:hidden">Open drawer</label>
+  <div class="bg-white min-h-full px-9">
+    <label for="my-drawer-2" class="btn btn-primary drawer-button md:hidden mt-6"
+      >Open drawer</label
+    >
     <div class="mt-3 md:mt-[70px] md:mb-[26px]">
-      <button class="btn btn-secondary px-8 py-4">Barang Keluar Baru +</button>
+      <RouterLink class="btn btn-secondary px-8 py-4" :to="{ name: 'barangkeluarbaru' }"
+        >Barang Keluar Baru +</RouterLink
+      >
     </div>
     <h1 class="text-3xl font-normal">Permintaan Pengiriman (Barang Keluar)</h1>
     <div class="flex py-4 gap-4">
@@ -41,100 +45,16 @@
         </thead>
         <tbody>
           <!-- row 1 -->
-          <tr>
-            <th>1</th>
-            <td>12-03-2024 14:30</td>
-            <td>IB0001232131</td>
-            <td>Marketplace</td>
-            <td>00023</td>
+          <tr v-for="item in barang_keluar" :key="item.id">
+            <th>{{ item.no }}</th>
+            <td>{{ item.tanggal }}</td>
+            <td>{{ item.outboundId }}</td>
+            <td>{{ item.source }}</td>
+            <td>{{ item.customerId }}</td>
             <td>
-              <div class="badge bg-[#FDFDEC] text-[#787303]">
-                <svg
-                  class="mr-2"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="9"
-                  height="9"
-                  viewBox="0 0 9 9"
-                  fill="none"
-                >
-                  <circle cx="4.69423" cy="4.81056" r="2.88478" fill="#BA9F14" />
-                </svg>
-                Ready to Pick
-              </div>
+              <div :class="getStatusClasses(item.status)">{{ item.status }}</div>
             </td>
-            <td><button class="btn btn-xs btn-outline font-medium">Details</button></td>
-          </tr>
-          <!-- row 2 -->
-          <tr>
-            <th>1</th>
-            <td>12-03-2024 14:30</td>
-            <td>IB0001232131</td>
-            <td>Marketplace</td>
-            <td>00023</td>
-            <td>
-              <div class="badge bg-[#ECF1FD] text-[#032478]">
-                <svg
-                  class="mr-2"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="9"
-                  height="9"
-                  viewBox="0 0 9 9"
-                  fill="none"
-                >
-                  <circle cx="4.69423" cy="4.81056" r="2.88478" fill="#1425BA" />
-                </svg>
-                On Delivery
-              </div>
-            </td>
-            <td><button class="btn btn-xs btn-outline font-medium">Details</button></td>
-          </tr>
-          <!-- row 3 -->
-          <tr>
-            <th>1</th>
-            <td>12-03-2024 14:30</td>
-            <td>IB0001232131</td>
-            <td>Marketplace</td>
-            <td>00023</td>
-            <td>
-              <div class="badge bg-[#EEFDEC] text-[#17BA14]">
-                <svg
-                  class="mr-2"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="9"
-                  height="9"
-                  viewBox="0 0 9 9"
-                  fill="none"
-                >
-                  <circle cx="4.69423" cy="4.81056" r="2.88478" fill="#137803" />
-                </svg>
-                Delivered
-              </div>
-            </td>
-            <td><button class="btn btn-xs btn-outline font-medium">Details</button></td>
-          </tr>
-          <!-- row 4 -->
-          <tr>
-            <th>1</th>
-            <td>12-03-2024 14:30</td>
-            <td>IB0001232131</td>
-            <td>Marketplace</td>
-            <td>00023</td>
-            <td>
-              <div class="badge bg-[#FFD7D7] text-[#D62424]">
-                <svg
-                  class="mr-2"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="9"
-                  height="9"
-                  viewBox="0 0 9 9"
-                  fill="none"
-                >
-                  <circle cx="4.69423" cy="4.81056" r="2.88478" fill="#D62424" />
-                </svg>
-                In Review
-              </div>
-            </td>
-            <td><button class="btn btn-xs btn-outline font-medium">Details</button></td>
+            <td><button class="btn btn-xs btn-outline font-medium">Detail</button></td>
           </tr>
         </tbody>
       </table>
@@ -143,5 +63,28 @@
 </template>
 
 <script>
-export default {}
+import axios from 'axios'
+
+export default {
+  data() {
+    return {
+      barang_keluar: []
+    }
+  },
+  async created() {
+    const result = await axios.get('https://663868634253a866a24da59a.mockapi.io/api/barangkeluar')
+    this.barang_keluar = result.data
+  },
+  methods: {
+    getStatusClasses(status) {
+      const classMap = {
+        'Ready to Pick': 'badge bg-[#FDFDEC] text-[#787303]',
+        'On Delivery': 'badge bg-[#ECF1FD] text-[#032478]',
+        Delivered: 'badge bg-[#EEFDEC] text-[#17BA14]',
+        'In Review': 'badge bg-[#FFD7D7] text-[#D62424]'
+      }
+      return classMap[status] || 'badge'
+    }
+  }
+}
 </script>
