@@ -1,7 +1,9 @@
 <script setup>
-import { ref, defineProps } from 'vue'
-
-const props = defineProps(['handleAddItem', 'handleRemoveItem', 'selectedItems'])
+import { useBarangMasukStore } from '@/stores/barang-masuk'
+import { storeToRefs } from 'pinia'
+import { ref } from 'vue'
+const store = useBarangMasukStore()
+const { data } = storeToRefs(store)
 
 const dummyProducts = [
   {
@@ -23,7 +25,7 @@ const handleChangeProduct = (product) => {
   selectedProduct.value = JSON.parse(product)
 }
 const handleAddProduct = () => {
-  props.handleAddItem({ ...selectedProduct.value, quantity: quantity.value })
+  store.addItem({ ...selectedProduct.value, quantity: quantity.value })
   selectedProduct.value = null
   quantity.value = 0
 }
@@ -105,7 +107,7 @@ const handleAddProduct = () => {
         </thead>
         <tbody>
           <!-- row 1 -->
-          <tr v-for="(product, index) in selectedItems" :key="product.id">
+          <tr v-for="(product, index) in data.selectedItems" :key="product.id">
             <td>{{ index + 1 }}</td>
             <td>{{ product.name }}</td>
             <td>{{ product.sku }}</td>
@@ -114,7 +116,7 @@ const handleAddProduct = () => {
             <td>{{ product.quantity }}</td>
             <td>
               <button
-                @click="handleRemoveItem(index)"
+                @click="store.removeItem(index)"
                 class="bg-red-200 text-red-700 px-2 rounded-full"
               >
                 Remove
