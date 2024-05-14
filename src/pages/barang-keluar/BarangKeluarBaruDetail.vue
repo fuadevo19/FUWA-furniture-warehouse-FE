@@ -90,7 +90,7 @@
       </table>
     </div>
     <div class="w-fit ml-auto">
-      <button class="btn btn-md btn-secondary mt-10">Selanjutnya</button>
+      <button class="btn btn-md btn-secondary mt-10">Simpan</button>
     </div>
   </div>
 </template>

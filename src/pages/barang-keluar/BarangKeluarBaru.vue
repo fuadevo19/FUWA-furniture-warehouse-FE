@@ -31,7 +31,9 @@
       </label>
     </div>
     <div class="w-fit ml-auto">
-      <button class="btn btn-md btn-secondary mt-10">Selanjutnya</button>
+      <RouterLink class="btn btn-md btn-secondary mt-10" :to="{ name: 'barangkeluarbarudetail' }"
+        >Selanjutnya</RouterLink
+      >
     </div>
   </div>
 </template>
