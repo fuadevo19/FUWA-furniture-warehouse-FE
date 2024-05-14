@@ -31,7 +31,6 @@
     </div>
     <div class="overflow-x-auto">
       <table class="table">
-        <!-- head -->
         <thead>
           <tr>
             <th>No</th>
@@ -44,7 +43,6 @@
           </tr>
         </thead>
         <tbody>
-          <!-- row 1 -->
           <tr v-for="item in barang_keluar" :key="item.id">
             <th>{{ item.no }}</th>
             <td>{{ item.tanggal }}</td>
@@ -54,7 +52,13 @@
             <td>
               <div :class="getStatusClasses(item.status)">{{ item.status }}</div>
             </td>
-            <td><button class="btn btn-xs btn-outline font-medium">Detail</button></td>
+            <td>
+              <RouterLink
+                :to="{ name: 'barangkeluardetail' }"
+                class="btn btn-xs btn-outline font-medium"
+                >Detail</RouterLink
+              >
+            </td>
           </tr>
         </tbody>
       </table>
