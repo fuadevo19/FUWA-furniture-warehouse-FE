@@ -20,12 +20,11 @@ const handleSubmit = async (event) => {
 
   if (isFormValid.value) {
     try {
-      const res = await authStore.login({
-        username,
-        password
+      await authStore.login({
+        username: username.value,
+        password: password.value
       })
-      console.log(res)
-      //  router.push('/')
+      router.push('/')
     } catch (error) {
       console.log(error)
       // alert('Invalid credentials')
