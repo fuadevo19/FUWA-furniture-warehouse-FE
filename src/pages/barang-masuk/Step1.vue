@@ -1,6 +1,8 @@
 <script setup>
-import { defineProps } from 'vue'
-const { payload } = defineProps(['payload'])
+import { useBarangMasukStore } from '@/stores/barang-masuk'
+
+const store = useBarangMasukStore()
+const { setBarangMasuk } = store
 </script>
 
 <template>
@@ -10,7 +12,7 @@ const { payload } = defineProps(['payload'])
         <span class="label-text">Tanggal dan Waktu</span>
       </div>
       <input
-        v-model="payload.date"
+        @change="setBarangMasuk('date', $event.target.value)"
         required
         type="text"
         placeholder="Masukkan Tanggal dan Waktu"
@@ -22,7 +24,7 @@ const { payload } = defineProps(['payload'])
         <span class="label-text">Reference Number</span>
       </div>
       <input
-        v-model="payload.reference_number"
+        @change="setBarangMasuk('reference_number', $event.target.value)"
         required
         type="text"
         placeholder="Masukkan Reference Number"
@@ -34,7 +36,7 @@ const { payload } = defineProps(['payload'])
         <span class="label-text">Supplier ID</span>
       </div>
       <input
-        v-model="payload.supplier_id"
+        @change="setBarangMasuk('supplier_id', $event.target.value)"
         required
         type="text"
         placeholder="Masukkan Supplier ID"

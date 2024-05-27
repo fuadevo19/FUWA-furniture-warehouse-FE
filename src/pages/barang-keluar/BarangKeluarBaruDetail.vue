@@ -1,38 +1,13 @@
-<script setup>
-import { useBarangMasukStore } from '@/stores/barang-masuk'
-import { storeToRefs } from 'pinia'
-import { ref } from 'vue'
-const store = useBarangMasukStore()
-const { data } = storeToRefs(store)
-
-const dummyProducts = [
-  {
-    id: 1,
-    name: 'lemari',
-    description: 'Lemari warna kuning',
-    sku: '1',
-    size: '20cm x 20cm x 20cm',
-    weight: '20 kg',
-    zone: 'A01',
-    stock: 10
-  }
-]
-
-let selectedProduct = ref(null)
-let quantity = ref(0)
-
-const handleChangeProduct = (product) => {
-  selectedProduct.value = JSON.parse(product)
-}
-const handleAddProduct = () => {
-  store.addItem({ ...selectedProduct.value, quantity: quantity.value })
-  selectedProduct.value = null
-  quantity.value = 0
-}
-</script>
-
 <template>
-  <div class="bg-white p-4 mt-10 max-w-5xl space-y-4">
+  <div class="bg-white min-h-full px-9">
+    <label for="my-drawer-2" class="btn btn-primary drawer-button md:hidden mt-6"
+      >Open drawer</label
+    >
+    <div class="flex justify-between items-center md:my-10">
+      <h1 class="text-2xl font-semibold text-secondary">Masukkan List Barang</h1>
+      <h4>ID : IB00001</h4>
+    </div>
+
     <section class="flex justify-between items-center">
       <div>
         <h2 class="font-bold text-lg">List Barang</h2>
@@ -49,11 +24,7 @@ const handleAddProduct = () => {
               <div class="label">
                 <span class="label-text">Produk</span>
               </div>
-              <select
-                :value="JSON.stringify(selectedProduct)"
-                @change="handleChangeProduct($event.target.value)"
-                class="select select-bordered w-full"
-              >
+              <select class="select select-bordered w-full">
                 <option
                   v-for="product in dummyProducts"
                   :key="product.id"
@@ -80,12 +51,7 @@ const handleAddProduct = () => {
           </div>
           <div class="modal-action">
             <form method="dialog">
-              <button
-                @click="handleAddProduct"
-                :class="`btn btn-secondary ${(!selectedProduct || !quantity) && ' btn-disabled'}`"
-              >
-                Tambahkan
-              </button>
+              <button class="btn btn-secondary">Tambahkan</button>
             </form>
           </div>
         </div>
@@ -102,29 +68,33 @@ const handleAddProduct = () => {
             <th>Ukuran</th>
             <th>Berat</th>
             <th>Qty</th>
+            <th>Zone</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
           <!-- row 1 -->
-          <tr v-for="(product, index) in data.selectedItems" :key="product.id">
-            <td>{{ index + 1 }}</td>
-            <td>{{ product.name }}</td>
-            <td>{{ product.sku }}</td>
-            <td>{{ product.size }}</td>
-            <td>{{ product.weight }}</td>
-            <td>{{ product.quantity }}</td>
+          <tr>
+            <td>1</td>
+            <td>lemari</td>
+            <td>1</td>
+            <td>20cm x 20cm x 20cm</td>
+            <td>20 kg</td>
+            <td>3</td>
+            <td>A01</td>
             <td>
-              <button
-                @click="store.removeItem(index)"
-                class="bg-red-200 text-red-700 px-2 rounded-full"
-              >
-                Remove
-              </button>
+              <button class="bg-red-200 text-red-700 px-2 rounded-full">Remove</button>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
+    <div class="w-fit ml-auto">
+      <button class="btn btn-md btn-secondary mt-10">Simpan</button>
+    </div>
   </div>
 </template>
+
+<script>
+export default {}
+</script>
