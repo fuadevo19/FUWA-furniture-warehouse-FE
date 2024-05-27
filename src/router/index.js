@@ -10,6 +10,7 @@ import BarangKeluar from '@/pages/barang-keluar/index.vue'
 import BarangKeluarBaru from '@/pages/barang-keluar/BarangKeluarBaru.vue'
 import BarangKeluarBaruDetail from '@/pages/barang-keluar/BarangKeluarBaruDetail.vue'
 import BarangKeluarDetail from '@/pages/barang-keluar/BarangKeluarDetail.vue'
+import Example from '@/pages/Example.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -23,6 +24,11 @@ const router = createRouter({
       path: '/produk',
       name: 'produk',
       component: PageProduk
+    },
+    {
+      path: '/example',
+      name: 'example',
+      component: Example
     },
     {
       path: '/barang-masuk',
@@ -80,7 +86,7 @@ const router = createRouter({
 //     to.path !== '/login'
 //   ) {
 //     // redirect the user to the login page
-//     return { name: '/login' }
+//     return { name: 'login' }
 //   }
 // })
 

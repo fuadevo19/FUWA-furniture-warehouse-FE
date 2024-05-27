@@ -1,18 +1,29 @@
-// stores/counter.js
+// src/stores/auth.js
+import { login } from '@/queries/auth'
 import { defineStore } from 'pinia'
 
-export const userStore = defineStore('userData', {
-  state: () => {
-    return {
-      userData: null
-    }
-  },
+export const useAuthStore = defineStore('auth', {
+  state: () => ({
+    user: JSON.parse(localStorage.getItem('user')),
+    status: JSON.parse(localStorage.getItem('user')) ? { loggedIn: true } : { loggedIn: false }
+  }),
   actions: {
-    storeUserData(userData) {
-      this.userData = userData
+    async login(user) {
+      try {
+        const loggedInUser = await login(user)
+        this.user = loggedInUser
+        this.status.loggedIn = true
+        return loggedInUser
+      } catch (error) {
+        this.status.loggedIn = false
+        this.user = null
+        throw error
+      }
     },
-    getStoredUserData() {
-      return this.userData
+    logout() {
+      AuthService.logout()
+      this.status.loggedIn = false
+      this.user = null
     }
   }
 })
