@@ -1,15 +1,16 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Homepage from '@/pages/homepage/Index.vue'
+import Homepage from '@/pages/homepage/index.vue'
 import Login from '@/pages/Login.vue'
 import PageProduk from '@/pages/PageProduk.vue'
 import BarangMasuk from '@/pages/barang-masuk/BarangMasuk.vue'
 import BarangMasukBaru from '@/pages/barang-masuk/BarangMasukBaru.vue'
 import Detail from '@/pages/barang-masuk/Detail.vue'
 import DetailProduk from '@/pages/DetailProduk.vue'
-import BarangKeluar from '@/pages/barang-keluar/Index.vue'
+import BarangKeluar from '@/pages/barang-keluar/index.vue'
 import BarangKeluarBaru from '@/pages/barang-keluar/BarangKeluarBaru.vue'
 import BarangKeluarBaruDetail from '@/pages/barang-keluar/BarangKeluarBaruDetail.vue'
 import BarangKeluarDetail from '@/pages/barang-keluar/BarangKeluarDetail.vue'
+import BarangKeluarSuratJalan from '@/pages/barang-keluar/SuratJalan.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -68,6 +69,11 @@ const router = createRouter({
       path: '/barang-keluar/detail',
       name: 'barangkeluardetail',
       component: BarangKeluarDetail
+    },
+    {
+      path: '/barang-keluar/surat-jalan',
+      name: 'barangkeluarsuratjalan',
+      component: BarangKeluarSuratJalan
     }
   ]
 })
