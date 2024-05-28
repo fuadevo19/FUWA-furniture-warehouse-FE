@@ -70,6 +70,9 @@ import iconStockOpname from '@/assets/nav-stock-opname.svg'
 import iconPengaturan from '@/assets/nav-setting.svg'
 import iconKeluar from '@/assets/nav-keluar.svg'
 
+const publicRoutes = ['/login']
+const isPublic = publicRoutes.includes(window.location.pathname)
+
 export default {
   data() {
     return {
@@ -80,7 +83,8 @@ export default {
       iconBarangKeluar,
       iconStockOpname,
       iconPengaturan,
-      iconKeluar
+      iconKeluar,
+      isPublic
     }
   }
 }

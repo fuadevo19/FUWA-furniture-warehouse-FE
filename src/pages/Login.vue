@@ -3,22 +3,32 @@ import { ref, watchEffect } from 'vue'
 import logo from '@/assets/logo_light.png'
 import login_bg from '@/assets/login_bg.png'
 import { useRouter } from 'vue-router'
+import { useAuthStore } from '@/stores/user'
 
 const router = useRouter()
-const email = ref('')
+const username = ref('')
 const password = ref('')
 const isFormValid = ref(false)
+const authStore = useAuthStore()
 
 watchEffect(() => {
-  isFormValid.value = email.value && password.value
+  isFormValid.value = username.value && password.value
 })
 
-const handleSubmit = (event) => {
+const handleSubmit = async (event) => {
   event.preventDefault()
 
   if (isFormValid.value) {
-    // TODO : Handle Submit
-    router.push('/')
+    try {
+      await authStore.login({
+        username: username.value,
+        password: password.value
+      })
+      router.push('/')
+    } catch (error) {
+      console.log(error)
+      // alert('Invalid credentials')
+    }
   }
 }
 </script>
@@ -39,12 +49,12 @@ const handleSubmit = (event) => {
       </div>
       <div class="w-full text-left space-y-2">
         <div>
-          <span class="label-text">Email</span>
+          <span class="label-text">username</span>
           <input
-            name="email"
-            v-model="email"
-            type="email"
-            placeholder="Masukkan email anda"
+            name="username"
+            v-model="username"
+            type="text"
+            placeholder="Masukkan username anda"
             class="input input-bordered input-primary w-full"
           />
         </div>
