@@ -11,6 +11,7 @@ import BarangKeluarBaru from '@/pages/barang-keluar/BarangKeluarBaru.vue'
 import BarangKeluarBaruDetail from '@/pages/barang-keluar/BarangKeluarBaruDetail.vue'
 import BarangKeluarDetail from '@/pages/barang-keluar/BarangKeluarDetail.vue'
 import BarangKeluarSuratJalan from '@/pages/barang-keluar/SuratJalan.vue'
+import Example from '@/pages/Example.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

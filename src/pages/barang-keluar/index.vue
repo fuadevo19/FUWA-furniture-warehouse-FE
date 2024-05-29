@@ -43,7 +43,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="item in barang_keluar" :key="item.id">
+          <tr v-for="item in outbound" :key="item.id">
             <th>{{ item.no }}</th>
             <td>{{ item.tanggal }}</td>
             <td>{{ item.outboundId }}</td>
@@ -68,16 +68,17 @@
 
 <script>
 import axios from 'axios'
+import { outbound } from '@/queries/outbound'
 
 export default {
+  name: 'outbound',
   data() {
     return {
-      barang_keluar: []
+      outbound: []
     }
   },
-  async created() {
-    const result = await axios.get('https://663868634253a866a24da59a.mockapi.io/api/barangkeluar')
-    this.barang_keluar = result.data
+  mounted() {
+    this.fetchoutbound()
   },
   methods: {
     getStatusClasses(status) {
@@ -88,6 +89,11 @@ export default {
         'In Review': 'badge bg-[#FFD7D7] text-[#D62424]'
       }
       return classMap[status] || 'badge'
+    },
+    fetchoutbound() {
+      outbound.getAll().then((response) => {
+        this.outbound = response.data
+      })
     }
   }
 }
