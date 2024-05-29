@@ -10,6 +10,7 @@ import BarangKeluar from '@/pages/barang-keluar/index.vue'
 import BarangKeluarBaru from '@/pages/barang-keluar/BarangKeluarBaru.vue'
 import BarangKeluarBaruDetail from '@/pages/barang-keluar/BarangKeluarBaruDetail.vue'
 import BarangKeluarDetail from '@/pages/barang-keluar/BarangKeluarDetail.vue'
+import BarangKeluarSuratJalan from '@/pages/barang-keluar/SuratJalan.vue'
 import Example from '@/pages/Example.vue'
 
 const router = createRouter({
@@ -74,6 +75,11 @@ const router = createRouter({
       path: '/barang-keluar/detail',
       name: 'barangkeluardetail',
       component: BarangKeluarDetail
+    },
+    {
+      path: '/barang-keluar/surat-jalan',
+      name: 'barangkeluarsuratjalan',
+      component: BarangKeluarSuratJalan
     }
   ]
 })
