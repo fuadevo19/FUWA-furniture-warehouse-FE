@@ -25,7 +25,10 @@ const handleChangeProduct = (product) => {
   selectedProduct.value = JSON.parse(product)
 }
 const handleAddProduct = () => {
-  store.addItem({ ...selectedProduct.value, quantity: quantity.value })
+  store.addItem({
+    ...selectedProduct.value,
+    quantity: Number(quantity.value)
+  })
   selectedProduct.value = null
   quantity.value = 0
 }
