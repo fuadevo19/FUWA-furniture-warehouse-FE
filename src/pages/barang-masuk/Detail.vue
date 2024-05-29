@@ -1,5 +1,21 @@
-<script></script>
+<script>
+import { fetchInboundDetail } from '@/queries/inbound'
+import { useRoute } from 'vue-router'
 
+export default {
+  data() {
+    return {
+      data: []
+    }
+  },
+  async mounted() {
+    const route = useRoute()
+    const id = route.query?.id
+    const inboundRes = await fetchInboundDetail(id)
+    this.data = inboundRes.data
+  }
+}
+</script>
 <template>
   <div class="bg-white min-h-full p-4 mt-10 max-w-5xl space-y-10">
     <h1 class="text-center text-2xl font-bold">Informasi Barang Masuk</h1>
@@ -9,18 +25,16 @@
         <li>Tanggal dan Waktu</li>
       </ul>
       <ul class="space-y-2">
-        <li>1231231</li>
-        <li>24 Juni 2024</li>
+        <li>{{ data.inbound_id }}</li>
+        <li>{{ data.datetime }}</li>
       </ul>
       <ul class="space-y-2 font-semibold">
         <li>Reference Number</li>
         <li>Supplier ID</li>
-        <li>Status</li>
       </ul>
       <ul class="space-y-2">
-        <li>123123</li>
-        <li>123123</li>
-        <li>DONE QCs</li>
+        <li>{{ data.reference_number }}</li>
+        <li>SP{{ data.inbound_id }}</li>
       </ul>
     </div>
     <div class="overflow-x-auto whitespace-nowrap">
@@ -38,15 +52,14 @@
           </tr>
         </thead>
         <tbody>
-          <!-- row 1 -->
-          <tr>
-            <td>1</td>
-            <td>Lemari 4 pintu</td>
-            <td>LLC123</td>
-            <td>60kcm x 20cm x 10cm</td>
-            <td>21Kg</td>
-            <td>3</td>
-            <td>A01</td>
+          <tr v-for="(product, index) in data.products" :key="product.id">
+            <td>{{ index + 1 }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.sku ?? '-' }}</td>
+            <td>{{ product.size ?? '-' }}</td>
+            <td>{{ product.weight ?? '-' }}</td>
+            <td>{{ product.stock ?? 0 }}</td>
+            <td>{{ product.zone ?? '-' }}</td>
           </tr>
         </tbody>
       </table>
