@@ -1,6 +1,7 @@
 <script>
 import { fetchInboundDetail } from '@/queries/inbound'
 import { useRoute } from 'vue-router'
+import { format } from 'date-fns'
 
 export default {
   data() {
@@ -13,6 +14,12 @@ export default {
     const id = route.query?.id
     const inboundRes = await fetchInboundDetail(id)
     this.data = inboundRes.data
+    console.log(this.data)
+  },
+  methods: {
+    formatDate(date) {
+      return format(date ? new Date(date) : new Date(), 'dd MMMM yyyy')
+    }
   }
 }
 </script>
@@ -25,8 +32,8 @@ export default {
         <li>Tanggal dan Waktu</li>
       </ul>
       <ul class="space-y-2">
-        <li>{{ data.inbound_id }}</li>
-        <li>{{ data.datetime }}</li>
+        <li>{{ data.id }}</li>
+        <li>{{ formatDate(data.datetime) }}</li>
       </ul>
       <ul class="space-y-2 font-semibold">
         <li>Reference Number</li>
@@ -34,7 +41,7 @@ export default {
       </ul>
       <ul class="space-y-2">
         <li>{{ data.reference_number }}</li>
-        <li>SP{{ data.inbound_id }}</li>
+        <li>SP{{ data.id }}</li>
       </ul>
     </div>
     <div class="overflow-x-auto whitespace-nowrap">
