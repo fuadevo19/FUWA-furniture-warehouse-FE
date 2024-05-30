@@ -1,8 +1,5 @@
 <template>
   <div class="bg-white min-h-full px-9">
-    <label for="my-drawer-2" class="btn btn-primary drawer-button md:hidden mt-6"
-      >Open drawer</label
-    >
     <div class="flex justify-between mt-6">
       <div>
         <img class="h-[70px] w-[75px]" :src="logoIcon" alt="fuwa-ms" />

@@ -1,8 +1,5 @@
 <template>
   <div class="bg-white min-h-full px-9">
-    <label for="my-drawer-2" class="btn btn-primary drawer-button md:hidden mt-6"
-      >Open drawer</label
-    >
     <div class="mt-3 md:mt-[70px] md:mb-[26px]">
       <RouterLink class="btn btn-secondary px-8 py-4" :to="{ name: 'barangkeluarbaru' }"
         >Barang Keluar Baru +</RouterLink

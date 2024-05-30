@@ -1,8 +1,5 @@
 <template>
   <div class="bg-white min-h-full px-9">
-    <label for="my-drawer-2" class="btn btn-primary drawer-button md:hidden mt-6"
-      >Open drawer</label
-    >
     <div class="flex justify-between items-center md:my-10">
       <h1 class="text-2xl font-semibold text-secondary">Masukkan List Barang</h1>
       <h4>ID : IB00001</h4>
