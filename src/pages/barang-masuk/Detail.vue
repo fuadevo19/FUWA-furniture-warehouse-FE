@@ -14,7 +14,6 @@ export default {
     const id = route.query?.id
     const inboundRes = await fetchInboundDetail(id)
     this.data = inboundRes.data
-    console.log(this.data)
   },
   methods: {
     formatDate(date) {

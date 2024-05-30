@@ -23,7 +23,6 @@ export const fetchInboundDetail = async (id) => {
 export const createInbound = async (data) => {
   try {
     const response = await axiosInstance.post(`/api/inbound`, data)
-    console.log(response)
     return response.data
   } catch (err) {
     console.error(err.toString())
