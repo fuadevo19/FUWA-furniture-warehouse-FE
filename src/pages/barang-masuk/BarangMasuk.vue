@@ -1,4 +1,5 @@
 <script>
+import { format } from 'date-fns'
 import { fetchInbound } from '@/queries/inbound'
 export default {
   data() {
@@ -8,7 +9,10 @@ export default {
   },
   async mounted() {
     const inboundRes = await fetchInbound()
-    this.inboundData = inboundRes.data
+    this.inboundData = inboundRes.data.map((item) => ({
+      ...item,
+      datetime: format(new Date(item.datetime), 'dd MMMM yyyy')
+    }))
   }
 }
 </script>
@@ -45,13 +49,13 @@ export default {
         </thead>
         <tbody>
           <!-- row 1 -->
-          <tr v-for="(inbound, index) in inboundData" :key="inbound.inbound_id">
+          <tr v-for="(inbound, index) in inboundData" :key="inbound.id">
             <td>{{ index + 1 }}</td>
             <td>{{ inbound.datetime }}</td>
-            <td>{{ inbound.inbound_id }}</td>
+            <td>{{ inbound.id }}</td>
             <td>{{ inbound.reference_number }}</td>
             <td>
-              <a :href="`/barang-masuk/detail?id=${inbound.inbound_id}`">
+              <a :href="`/barang-masuk/detail?id=${inbound.id}`">
                 <button class="btn btn-bordered btn-sm">Detail</button></a
               >
             </td>
