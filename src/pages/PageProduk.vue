@@ -49,12 +49,11 @@
             <th>Nama Barang</th>
             <th>Deskripsi</th>
             <th>SKU</th>
-            <th>Berat</th>
             <th>Ukuran</th>
+            <th>Berat</th>
             <th>Zone</th>
             <th>Stok</th>
-            <th>Created At</th>
-            <th>Updated At</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -63,12 +62,13 @@
             <td>{{ item.name }}</td>
             <td>{{ item.description }}</td>
             <td>{{ item.sku }}</td>
-            <td>{{ item.weight }}</td>
             <td>{{ item.size }}</td>
+            <td>{{ item.weight }}</td>
             <td>{{ item.zone }}</td>
             <td>{{ item.stock }}</td>
-            <td>{{ item.createdAt }}</td>
-            <td>{{ item.updatedAt }}</td>
+            <td>
+              <button class="btn btn-outline btn-sm" style="margin-right: 5px;">Detail</button>
+            </td>
           </tr>
         </tbody>
         <tfoot>
@@ -77,12 +77,11 @@
             <th>Nama Barang</th>
             <th>Deskripsi</th>
             <th>SKU</th>
-            <th>Berat</th>
             <th>Ukuran</th>
+            <th>Berat</th>
             <th>Zone</th>
             <th>Stok</th>
-            <th>Created At</th>
-            <th>Updated At</th>
+            <th>Action</th>
           </tr>
         </tfoot>
       </table>
