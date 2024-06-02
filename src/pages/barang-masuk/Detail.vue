@@ -58,7 +58,7 @@ export default {
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(product, index) in data.products" :key="product.id">
+          <tr v-for="(product, index) in data.Products" :key="product.id">
             <td>{{ index + 1 }}</td>
             <td>{{ product.name }}</td>
             <td>{{ product.sku ?? '-' }}</td>

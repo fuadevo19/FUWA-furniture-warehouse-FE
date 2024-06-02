@@ -29,6 +29,7 @@ export const useBarangMasukStore = defineStore('barang-masuk', {
         supplier_id: this.data.supplier_id,
         products: this.data.selectedItems.map((item) => ({ ...item, product_id: item.id }))
       })
+      window.location.replace('/barang-masuk')
     }
   }
 })
