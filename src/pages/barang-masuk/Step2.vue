@@ -1,22 +1,21 @@
 <script setup>
+import { fetchProducts } from '@/queries/product'
 import { useBarangMasukStore } from '@/stores/barang-masuk'
 import { storeToRefs } from 'pinia'
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+
 const store = useBarangMasukStore()
 const { data } = storeToRefs(store)
+const products = ref([])
 
-const dummyProducts = [
-  {
-    id: 1,
-    name: 'lemari',
-    description: 'Lemari warna kuning',
-    sku: '1',
-    size: '20cm x 20cm x 20cm',
-    weight: '20 kg',
-    zone: 'A01',
-    stock: 10
+onMounted(async () => {
+  try {
+    products.value = await fetchProducts()
+  } catch (error) {
+    console.error('Error fetching products:', error)
   }
-]
+})
+console.log(products)
 
 let selectedProduct = ref(null)
 let quantity = ref(0)
@@ -25,7 +24,10 @@ const handleChangeProduct = (product) => {
   selectedProduct.value = JSON.parse(product)
 }
 const handleAddProduct = () => {
-  store.addItem({ ...selectedProduct.value, quantity: quantity.value })
+  store.addItem({
+    ...selectedProduct.value,
+    quantity: Number(quantity.value)
+  })
   selectedProduct.value = null
   quantity.value = 0
 }
@@ -55,7 +57,7 @@ const handleAddProduct = () => {
                 class="select select-bordered w-full"
               >
                 <option
-                  v-for="product in dummyProducts"
+                  v-for="product in products"
                   :key="product.id"
                   :value="JSON.stringify(product)"
                 >

@@ -6,6 +6,6 @@ export const fetchProducts = async () => {
     return response.data
   } catch (err) {
     console.error(err.toString())
-    throw err
-  }
+    throw err
+  }
 }

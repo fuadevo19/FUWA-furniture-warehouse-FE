@@ -1,3 +1,4 @@
+import { createInbound } from '@/queries/inbound'
 import { defineStore } from 'pinia'
 
 export const useBarangMasukStore = defineStore('barang-masuk', {
@@ -20,6 +21,15 @@ export const useBarangMasukStore = defineStore('barang-masuk', {
       this.data.selectedItems = this.data.selectedItems.filter(
         (_, itemIndex) => itemIndex !== index
       )
+    },
+    async submitInbound() {
+      await createInbound({
+        datetime: this.data.date,
+        reference_number: this.data.reference_number,
+        supplier_id: this.data.supplier_id,
+        products: this.data.selectedItems.map((item) => ({ ...item, product_id: item.id }))
+      })
+      window.location.replace('/barang-masuk')
     }
   }
 })

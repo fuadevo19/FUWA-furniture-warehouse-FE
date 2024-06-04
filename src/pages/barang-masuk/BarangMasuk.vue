@@ -1,3 +1,22 @@
+<script>
+import { format } from 'date-fns'
+import { fetchInbound } from '@/queries/inbound'
+export default {
+  data() {
+    return {
+      inboundData: []
+    }
+  },
+  async mounted() {
+    const inboundRes = await fetchInbound()
+    this.inboundData = inboundRes.data.map((item) => ({
+      ...item,
+      datetime: format(new Date(item.datetime), 'dd MMMM yyyy')
+    }))
+  }
+}
+</script>
+
 <template>
   <div class="bg-white min-h-full p-4 mt-10 max-w-5xl space-y-4">
     <a href="/barang-masuk/new">
@@ -25,22 +44,18 @@
             <th>Tanggal dan Waktu</th>
             <th>Inbound ID</th>
             <th>Reference Number</th>
-            <th>Supplier ID</th>
-            <th>Status</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
           <!-- row 1 -->
-          <tr>
-            <td>1</td>
-            <td>2024-04-16 10:00 AM</td>
-            <td>IB123456</td>
-            <td>REF7890</td>
-            <td>SUP001</td>
-            <td>DONE QC</td>
+          <tr v-for="(inbound, index) in inboundData" :key="inbound.id">
+            <td>{{ index + 1 }}</td>
+            <td>{{ inbound.datetime }}</td>
+            <td>{{ inbound.id }}</td>
+            <td>{{ inbound.reference_number }}</td>
             <td>
-              <a href="/barang-masuk/detail?id=1">
+              <a :href="`/barang-masuk/detail?id=${inbound.id}`">
                 <button class="btn btn-bordered btn-sm">Detail</button></a
               >
             </td>

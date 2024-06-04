@@ -14,6 +14,8 @@ const { data } = storeToRefs(store)
 const nextStep = () => {
   if (currentStep.value < 2) {
     currentStep.value++
+  } else {
+    store.submitInbound()
   }
 }
 

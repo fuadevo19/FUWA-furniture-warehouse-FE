@@ -1,8 +1,5 @@
 <template>
   <div class="bg-white min-h-full px-9">
-    <label for="my-drawer-2" class="btn btn-primary drawer-button md:hidden mt-6"
-      >Open drawer</label
-    >
     <div class="mt-3 md:mt-[70px] md:mb-[26px]">
       <RouterLink class="btn btn-secondary px-8 py-4" :to="{ name: 'barangkeluarbaru' }"
         >Barang Keluar Baru +</RouterLink
@@ -43,7 +40,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="item in barang_keluar" :key="item.id">
+          <tr v-for="item in outbound" :key="item.id">
             <th>{{ item.no }}</th>
             <td>{{ item.tanggal }}</td>
             <td>{{ item.outboundId }}</td>
@@ -68,16 +65,17 @@
 
 <script>
 import axios from 'axios'
+import { outbound } from '@/queries/outbound'
 
 export default {
+  name: 'outbound',
   data() {
     return {
-      barang_keluar: []
+      outbound: []
     }
   },
-  async created() {
-    const result = await axios.get('https://663868634253a866a24da59a.mockapi.io/api/barangkeluar')
-    this.barang_keluar = result.data
+  mounted() {
+    this.fetchoutbound()
   },
   methods: {
     getStatusClasses(status) {
@@ -88,6 +86,11 @@ export default {
         'In Review': 'badge bg-[#FFD7D7] text-[#D62424]'
       }
       return classMap[status] || 'badge'
+    },
+    fetchoutbound() {
+      outbound.getAll().then((response) => {
+        this.outbound = response.data
+      })
     }
   }
 }
