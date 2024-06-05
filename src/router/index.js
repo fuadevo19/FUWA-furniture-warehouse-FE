@@ -52,10 +52,10 @@ const router = createRouter({
       component: Homepage
     },
     {
-      path: '/detailproduk',
+      path: '/produk/detail', // Hapus trailing slash di sini
       name: 'detailproduk',
       component: DetailProduk
-    },
+    },    
     {
       path: '/barang-keluar',
       name: 'barangkeluar',

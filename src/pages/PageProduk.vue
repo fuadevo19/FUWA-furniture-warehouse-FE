@@ -3,6 +3,7 @@
     <h1 class="text-4xl font-bold ml-4 mb-3 mt-3">Produk Page</h1>
     
     <div class="container flex justify-between">
+      <!-- Bagian Statistik Produk -->
       <div class="flex space-x-5">
         <div
           class="container1 w-72 h-48 bg-yellow-500 flex flex-col justify-center items-center text-left text-4xl font-bold rounded-lg -mt-0 -mr-10 -ml-20"
@@ -35,7 +36,7 @@
 
     <input
       type="text"
-      placeholder="Type here"
+      :placeholder="products.length > 0 ? 'Search Products' : 'Loading...'"
       class="appearance-none h-12 px-4 text-sm ml-4 mt-3 border border-gray-300 rounded w-full max-w-screen-md"
     />
 
@@ -67,7 +68,9 @@
             <td>{{ item.zone }}</td>
             <td>{{ item.stock }}</td>
             <td>
-              <button class="btn btn-outline btn-sm" style="margin-right: 5px;">Detail</button>
+              <a :href="`/produk/detail?id=${item.id}`">
+                <button class="btn btn-bordered btn-sm">Detail</button></a
+              >
             </td>
           </tr>
         </tbody>
@@ -89,24 +92,22 @@
   </div>
 </template>
 
-<script>
-import { fetchProducts } from '@/queries/product'
+<script setup>
+import { ref, onMounted } from 'vue';
+import { fetchProducts } from '@/queries/product';
 
-export default {
-  data() {
-    return {
-      products: []
-    }
-  },
-  async mounted() {
-    try {
-      const productsRes = await fetchProducts()
-      this.products = productsRes
-      console.log(productsRes)
-    } catch (error) {
-      console.error(error.toString())
-      // Handle error as needed
-    }
+const products = ref([]);
+
+const fetchProductData = async () => {
+  try {
+    const productsRes = await fetchProducts();
+    products.value = productsRes;
+  } catch (error) {
+    console.error(error.toString());
+    alert('Failed to fetch products. Please try again later.');
+    // Handle error as needed
   }
-}
+};
+
+onMounted(fetchProductData);
 </script>
