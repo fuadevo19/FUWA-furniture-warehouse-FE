@@ -9,3 +9,13 @@ export const fetchProducts = async () => {
     throw err
   }
 }
+
+export const getProdukDetail= async (id) => {
+  try {
+    const response = await axiosInstance.get(`/api/products/${id}`)
+    return response.data
+  } catch (err) {
+    console.error(err.toString())
+    throw err
+  }
+}
