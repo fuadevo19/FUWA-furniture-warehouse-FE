@@ -17,12 +17,34 @@
       </label>
       <label class="form-control w-full max-w-xs">
         <div class="label">
-          <span class="label-text">Supplier ID</span>
+          <span class="label-text">Nama Customer</span>
         </div>
         <input
           required
           type="text"
-          placeholder="Masukkan Supplier ID"
+          placeholder="Masukkan Nama Customer"
+          class="input input-bordered w-full max-w-xs"
+        />
+      </label>
+      <label class="form-control w-full max-w-xs">
+        <div class="label">
+          <span class="label-text">Nomor Customer</span>
+        </div>
+        <input
+          required
+          type="text"
+          placeholder="Masukkan Nomor Customer"
+          class="input input-bordered w-full max-w-xs"
+        />
+      </label>
+      <label class="form-control w-full max-w-xs">
+        <div class="label">
+          <span class="label-text">Alamat Customer</span>
+        </div>
+        <input
+          required
+          type="text"
+          placeholder="Masukkan Alamat Customer"
           class="input input-bordered w-full max-w-xs"
         />
       </label>

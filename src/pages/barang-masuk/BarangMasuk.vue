@@ -18,7 +18,7 @@ export default {
 </script>
 
 <template>
-  <div class="bg-white min-h-full p-4 mt-10 max-w-5xl space-y-4">
+  <div class="bg-white min-h-full p-4 mt-10 max-w-5xl space-y-4 over">
     <a href="/barang-masuk/new">
       <button class="btn btn-md btn-secondary">Penerimaan barang baru</button></a
     >
