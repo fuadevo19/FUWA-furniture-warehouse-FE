@@ -34,9 +34,6 @@
       </div>
       <div class="sidebar-bottom mb-4">
         <nav class="flex flex-col justify-between w-full h-full text-base mb-3">
-          <RouterLink class="flex items-center p-3 rounded hover:bg-[#F4EFFD]" :to="{ name: '' }"
-            ><img :src="iconPengaturan" alt="icon-nav" class="mr-[16px]" />Pengaturan</RouterLink
-          >
           <button @click="logout" class="flex items-center p-3 rounded hover:bg-[#F4EFFD]">
             <img :src="iconKeluar" alt="icon-nav" class="mr-[16px]" />Keluar
           </button>
