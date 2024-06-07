@@ -14,7 +14,7 @@ const { setBarangMasuk } = store
       <input
         @change="setBarangMasuk('date', $event.target.value)"
         required
-        type="text"
+        type="date"
         placeholder="Masukkan Tanggal dan Waktu"
         class="input input-bordered w-full max-w-xs"
       />
