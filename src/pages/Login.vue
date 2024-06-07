@@ -2,12 +2,10 @@
 import { ref, watchEffect } from 'vue'
 import logo from '@/assets/logo_light.png'
 import login_bg from '@/assets/login_bg.png'
-import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/user'
 import { toast } from 'vue3-toastify'
 import 'vue3-toastify/dist/index.css'
 
-const router = useRouter()
 const username = ref('')
 const password = ref('')
 const isFormValid = ref(false)
@@ -31,7 +29,7 @@ const handleSubmit = async (event) => {
         type: 'success'
       })
 
-      router.push('/')
+      window.location.replace('/')
     } catch (error) {
       if (error.response.status === 401) {
         toast('invalid username or password', {

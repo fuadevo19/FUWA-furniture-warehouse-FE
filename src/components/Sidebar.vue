@@ -21,12 +21,9 @@
             :to="{ name: 'barang-masuk' }"
             ><img :src="iconProduk" alt="icon-nav" class="mr-[16px]" />Barang Masuk</RouterLink
           >
-          <RouterLink
-            class="flex items-center p-3 rounded hover:bg-[#F4EFFD]"
-            :to="{ name: 'barangkeluar' }"
-            ><img :src="iconBarangKeluar" alt="icon-nav" class="mr-[16px]" />Barang
-            Keluar</RouterLink
-          >
+          <button class="flex items-center p-3 rounded hover:bg-[#F4EFFD]" @click="logout">
+            <img :src="iconBarangKeluar" alt="icon-nav" class="mr-[16px]" />Barang Keluar
+          </button>
           <RouterLink class="flex items-center p-3 rounded hover:bg-[#F4EFFD]" :to="{ name: '' }"
             ><img :src="iconLacak" alt="icon-nav" class="mr-[16px]" />Lacak Pengiriman</RouterLink
           >
@@ -40,9 +37,9 @@
           <RouterLink class="flex items-center p-3 rounded hover:bg-[#F4EFFD]" :to="{ name: '' }"
             ><img :src="iconPengaturan" alt="icon-nav" class="mr-[16px]" />Pengaturan</RouterLink
           >
-          <RouterLink class="flex items-center p-3 rounded hover:bg-[#F4EFFD]" :to="{ name: '' }"
-            ><img :src="iconKeluar" alt="icon-nav" class="mr-[16px]" />Keluar</RouterLink
-          >
+          <button @click="logout" class="flex items-center p-3 rounded hover:bg-[#F4EFFD]">
+            <img :src="iconKeluar" alt="icon-nav" class="mr-[16px]" />Keluar
+          </button>
         </nav>
         <div class="flex px-2 gap-x-2 items-center">
           <img
@@ -69,10 +66,10 @@ import iconBarangKeluar from '@/assets/nav-barang-keluar.svg'
 import iconStockOpname from '@/assets/nav-stock-opname.svg'
 import iconPengaturan from '@/assets/nav-setting.svg'
 import iconKeluar from '@/assets/nav-keluar.svg'
+import { logout } from '@/queries/auth'
 
 const publicRoutes = ['/login']
 const isPublic = publicRoutes.includes(window.location.pathname)
-
 export default {
   data() {
     return {
@@ -85,6 +82,12 @@ export default {
       iconPengaturan,
       iconKeluar,
       isPublic
+    }
+  },
+  methods: {
+    logout() {
+      console.log('Logout method called')
+      logout()
     }
   }
 }
