@@ -23,18 +23,6 @@ export default {
       <button class="btn btn-md btn-secondary">Penerimaan barang baru</button></a
     >
     <h1 class="text-4xl font-bold">Barang Masuk</h1>
-    <div class="flex space-x-4">
-      <select name="search-by" class="select select-bordered">
-        <option selected value="" disabled>Search By</option>
-        <option value="value1">value1</option>
-      </select>
-      <input type="text" class="w-full input input-bordered" placeholder="Search..." />
-      <button class="btn btn-secondary">Search</button>
-    </div>
-    <select name="Filter-by" class="select select-bordered">
-      <option selected value="" disabled>Filter By</option>
-      <option value="value1">value1</option>
-    </select>
     <div class="overflow-x-auto whitespace-nowrap">
       <table class="table">
         <!-- head -->

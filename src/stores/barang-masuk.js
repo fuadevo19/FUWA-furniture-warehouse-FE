@@ -1,5 +1,7 @@
 import { createInbound } from '@/queries/inbound'
 import { defineStore } from 'pinia'
+import { toast } from 'vue3-toastify'
+import 'vue3-toastify/dist/index.css'
 
 export const useBarangMasukStore = defineStore('barang-masuk', {
   state: () => ({ data: { date: '', reference_number: '', supplier_id: '', selectedItems: [] } }),
@@ -29,7 +31,12 @@ export const useBarangMasukStore = defineStore('barang-masuk', {
         supplier_id: this.data.supplier_id,
         products: this.data.selectedItems.map((item) => ({ ...item, product_id: item.id }))
       })
-      window.location.replace('/barang-masuk')
+      toast('Inbound created successfully', {
+        type: 'success',
+        onClose: () => {
+          window.location.replace('/barang-masuk')
+        }
+      })
     }
   }
 })
