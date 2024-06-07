@@ -10,7 +10,7 @@
         </div>
         <input
           required
-          type="text"
+          type="date"
           placeholder="Masukkan Tanggal dan Waktu"
           class="input input-bordered w-full max-w-xs"
         />
