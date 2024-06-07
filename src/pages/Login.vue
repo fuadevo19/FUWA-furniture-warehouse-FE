@@ -4,6 +4,8 @@ import logo from '@/assets/logo_light.png'
 import login_bg from '@/assets/login_bg.png'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/user'
+import { toast } from 'vue3-toastify'
+import 'vue3-toastify/dist/index.css'
 
 const router = useRouter()
 const username = ref('')
@@ -24,10 +26,18 @@ const handleSubmit = async (event) => {
         username: username.value,
         password: password.value
       })
+
+      toast('Login success', {
+        type: 'success'
+      })
+
       router.push('/')
     } catch (error) {
-      console.log(error)
-      // alert('Invalid credentials')
+      if (error.response.status === 401) {
+        toast('invalid username or password', {
+          type: 'error'
+        })
+      }
     }
   }
 }

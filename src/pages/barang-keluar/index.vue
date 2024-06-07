@@ -6,26 +6,7 @@
       >
     </div>
     <h1 class="text-3xl font-normal">Permintaan Pengiriman (Barang Keluar)</h1>
-    <div class="flex py-4 gap-4">
-      <div class="flex flex-col">
-        <select class="select select-bordered w-full max-w-xs mb-4">
-          <option disabled selected>Search By</option>
-          <option>Han Solo</option>
-          <option>Greedo</option>
-        </select>
-        <select class="select select-bordered w-full max-w-xs">
-          <option disabled selected>Filter Status</option>
-          <option>Han Solo</option>
-          <option>Greedo</option>
-        </select>
-      </div>
-      <input
-        type="text"
-        placeholder="Search Here"
-        class="appearance-none h-12 px-4 text-sm border border-gray-300 rounded w-full max-w-screen-md"
-      />
-      <button class="btn w-32 bg-green-500 text-stone-100">Search</button>
-    </div>
+
     <div class="overflow-x-auto">
       <table class="table">
         <thead>

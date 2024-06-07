@@ -15,7 +15,6 @@ onMounted(async () => {
     console.error('Error fetching products:', error)
   }
 })
-console.log(products)
 
 let selectedProduct = ref(null)
 let quantity = ref(0)
