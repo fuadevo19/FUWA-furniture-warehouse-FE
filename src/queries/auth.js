@@ -17,6 +17,8 @@ export const logout = async () => {
   try {
     localStorage.removeItem('token')
     setAuthHeader(null)
+    window.location.replace('/login')
+    window.location.reload()
   } catch (err) {
     console.error(err.toString())
     throw err
