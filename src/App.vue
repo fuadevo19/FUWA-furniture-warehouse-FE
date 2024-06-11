@@ -7,8 +7,8 @@ const isPublic = publicRoutes.includes(window.location.pathname)
 <template>
   <div class="drawer md:drawer-open">
     <input id="my-drawer" type="checkbox" class="drawer-toggle" />
-    <div class="drawer-content">
-      <label for="my-drawer" class="bg-primary rounded-md">
+    <div class="drawer-content overflow-y-clip">
+      <label for="my-drawer" class="bg-primary rounded-md md:hidden">
         <svg
           width="50px"
           height="50px"

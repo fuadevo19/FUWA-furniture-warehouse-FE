@@ -3,52 +3,39 @@
     <h1 class="text-2xl font-semibold text-secondary text-center md:mt-10">
       Informasi Pengiriman Barang
     </h1>
-    <div class="my-9 grid grid-cols-4 gap-4">
+    <div v-if="outboundDetail" class="my-9 grid grid-cols-4 gap-4">
       <ul class="space-y-2">
-        <li>Inbound ID</li>
+        <li>Outbound ID</li>
         <li>Tanggal dan Waktu</li>
-        <li>Courier</li>
-        <li>Source</li>
+        <li>Customer ID</li>
+        <li>Customer Name</li>
+        <li>Customer Address</li>
+        <li>Customer Number</li>
         <li>Status</li>
       </ul>
       <ul class="space-y-2 font-semibold">
-        <li>1231231</li>
-        <li>24 Juni 2024</li>
-        <li>JNT</li>
-        <li>Marketplace</li>
+        <li>{{ outboundDetail.id }}</li>
+        <li>{{ formatDate(outboundDetail.datetime) }}</li>
+        <li>{{ outboundDetail.customer_id }}</li>
+        <li>{{ outboundDetail.customer_name }}</li>
+        <li>{{ outboundDetail.customer_address }}</li>
+        <li>{{ outboundDetail.customer_number }}</li>
         <li>
           <div class="dropdown">
             <div
               tabindex="0"
               role="button"
-              class="text-red-500 font-normal border-2 rounded-md px-2 border-slate-300"
+              :class="getStatusClass(outboundDetail.status)"
+              class="font-normal border-2 rounded-md px-2 border-slate-300"
             >
-              IN RIVIEW
+              {{ outboundDetail.status }}
             </div>
-            <ul
-              tabindex="0"
-              class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
-            >
-              <li class="font-normal"><a>Item 1</a></li>
-            </ul>
           </div>
         </li>
       </ul>
-      <ul class="space-y-2">
-        <li>Customer ID</li>
-        <li>Customer Name</li>
-        <li>Customer Number</li>
-        <li>Customer Adress</li>
-      </ul>
-      <ul class="space-y-2 font-semibold">
-        <li>123123213</li>
-        <li>s***** z***</li>
-        <li>********67</li>
-        <li>Tanah Abang Jakarta</li>
-      </ul>
     </div>
-    <h2>List Barang</h2>
-    <div class="overflow-x-auto">
+    <h2 v-if="outboundDetail">List Barang</h2>
+    <div v-if="outboundDetail" class="overflow-x-auto">
       <table class="table">
         <thead>
           <tr>
@@ -59,26 +46,22 @@
             <th>Berat</th>
             <th>Qty</th>
             <th>ZONE</th>
-            <th>Stok</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th>1</th>
-            <td>Lemari laci 4 pintu putih</td>
-            <td>LL012399</td>
-            <td>60cm x 39.5cm x 68cm</td>
-            <td>21Kg</td>
-            <td>3</td>
-            <td>A01</td>
-            <td>
-              <div class="badge bg-[#EEFDEC] text-[#17BA14]">tersedia</div>
-            </td>
+          <tr v-for="(product, index) in outboundDetail.OutboundProducts" :key="product.id">
+            <th>{{ index + 1 }}</th>
+            <td>{{ product.Product.name }}</td>
+            <td>{{ product.Product.sku }}</td>
+            <td>{{ product.Product.size }}</td>
+            <td>{{ product.Product.weight }}Kg</td>
+            <td>{{ product.quantity }}</td>
+            <td>{{ product.Product.zone }}</td>
           </tr>
         </tbody>
       </table>
     </div>
-    <div class="flex flex-col justify-end items-end gap-5 mt-8">
+    <div v-if="outboundDetail" class="flex flex-col justify-end items-end gap-5 mt-8">
       <h3 class="font-normal text-sm">
         Note: Status tidak bisa diubah menjadi approved jika terdapat barang dengan stok habis
       </h3>
@@ -88,7 +71,40 @@
 </template>
 
 <script>
-export default {}
-</script>
+import { outbound } from '@/queries/outbound'
 
-<style></style>
+export default {
+  data() {
+    return {
+      outboundDetail: null
+    }
+  },
+  methods: {
+    getStatusClass(status) {
+      const classMap = {
+        in_review: 'text-red-500',
+        delivered: 'text-green-500',
+        on_delivery: 'text-blue-500',
+        ready_to_pick: 'text-yellow-500'
+      }
+      return classMap[status.toLowerCase()] || 'text-gray-500'
+    },
+    formatDate(dateStr) {
+      const date = new Date(dateStr)
+      return date.toLocaleDateString() + ' ' + date.toLocaleTimeString()
+    },
+    async fetchOutboundDetails() {
+      const outboundId = this.$route.query.id
+      try {
+        const data = await outbound.getById(outboundId)
+        this.outboundDetail = data
+      } catch (error) {
+        console.error('Error fetching outbound details:', error)
+      }
+    }
+  },
+  mounted() {
+    this.fetchOutboundDetails()
+  }
+}
+</script>

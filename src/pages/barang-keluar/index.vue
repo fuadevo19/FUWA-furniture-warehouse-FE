@@ -21,18 +21,18 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="item in outbound" :key="item.id">
-            <th>{{ item.no }}</th>
-            <td>{{ item.tanggal }}</td>
-            <td>{{ item.outboundId }}</td>
-            <td>{{ item.source }}</td>
-            <td>{{ item.customerId }}</td>
+          <tr v-for="(item, index) in outbound" :key="item.id">
+            <th>{{ index + 1 }}</th>
+            <td>{{ item.datetime }}</td>
+            <td>{{ item.id }}</td>
+            <td>Marketplace</td>
+            <td>{{ item.customer_id }}</td>
             <td>
               <div :class="getStatusClasses(item.status)">{{ item.status }}</div>
             </td>
             <td>
               <RouterLink
-                :to="{ name: 'barangkeluardetail' }"
+                :to="`/barang-keluar/detail?id=${item.id}`"
                 class="btn btn-xs btn-outline font-medium"
                 >Detail</RouterLink
               >
@@ -45,18 +45,16 @@
 </template>
 
 <script>
-import axios from 'axios'
 import { outbound } from '@/queries/outbound'
 
 export default {
-  name: 'outbound',
   data() {
     return {
       outbound: []
     }
   },
   mounted() {
-    this.fetchoutbound()
+    this.fetchOutbound()
   },
   methods: {
     getStatusClasses(status) {
@@ -68,10 +66,15 @@ export default {
       }
       return classMap[status] || 'badge'
     },
-    fetchoutbound() {
-      outbound.getAll().then((response) => {
-        this.outbound = response.data
-      })
+    fetchOutbound() {
+      outbound
+        .getAll()
+        .then((response) => {
+          this.outbound = response
+        })
+        .catch((error) => {
+          console.error('Error fetching outbound data:', error)
+        })
     }
   }
 }
