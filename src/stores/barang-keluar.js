@@ -44,12 +44,7 @@ export const useBarangKeluarStore = defineStore('barang-keluar', {
         customer_address: this.data.customer_address,
         products: this.data.selectedItems.map((item) => ({ ...item, product_id: item.id }))
       })
-      toast('Outbound created successfully', {
-        type: 'success',
-        onClose: () => {
-          window.location.replace('/barang-keluar')
-        }
-      })
+
       localStorage.removeItem('barangKeluarData')
     }
   }
