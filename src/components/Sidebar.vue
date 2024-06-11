@@ -21,9 +21,12 @@
             :to="{ name: 'barang-masuk' }"
             ><img :src="iconProduk" alt="icon-nav" class="mr-[16px]" />Barang Masuk</RouterLink
           >
-          <button class="flex items-center p-3 rounded hover:bg-[#F4EFFD]" @click="logout">
+          <RouterLink
+            class="flex items-center p-3 rounded hover:bg-[#F4EFFD]"
+            :to="{ name: 'barangkeluar' }"
+          >
             <img :src="iconBarangKeluar" alt="icon-nav" class="mr-[16px]" />Barang Keluar
-          </button>
+          </RouterLink>
           <RouterLink class="flex items-center p-3 rounded hover:bg-[#F4EFFD]" :to="{ name: '' }"
             ><img :src="iconLacak" alt="icon-nav" class="mr-[16px]" />Lacak Pengiriman</RouterLink
           >
