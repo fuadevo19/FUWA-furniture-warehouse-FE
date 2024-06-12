@@ -7,19 +7,15 @@
       <ul class="space-y-2">
         <li>Outbound ID</li>
         <li>Tanggal dan Waktu</li>
-        <li>Customer ID</li>
-        <li>Customer Name</li>
-        <li>Customer Address</li>
-        <li>Customer Number</li>
+        <li>Courier</li>
+        <li>Source</li>
         <li>Status</li>
       </ul>
       <ul class="space-y-2 font-semibold">
         <li>{{ outboundDetail.id }}</li>
         <li>{{ formatDate(outboundDetail.datetime) }}</li>
-        <li>{{ outboundDetail.customer_id }}</li>
-        <li>{{ outboundDetail.customer_name }}</li>
-        <li>{{ outboundDetail.customer_address }}</li>
-        <li>{{ outboundDetail.customer_number }}</li>
+        <li>JNT</li>
+        <li>Marketplace</li>
         <li>
           <div class="dropdown">
             <div
@@ -32,6 +28,18 @@
             </div>
           </div>
         </li>
+      </ul>
+      <ul class="space-y-2">
+        <li>Customer ID</li>
+        <li>Customer Name</li>
+        <li>Customer Address</li>
+        <li>Customer Number</li>
+      </ul>
+      <ul class="space-y-2 font-semibold">
+        <li>{{ outboundDetail.customer_id }}</li>
+        <li>{{ outboundDetail.customer_name }}</li>
+        <li>{{ outboundDetail.customer_address }}</li>
+        <li>{{ outboundDetail.customer_number }}</li>
       </ul>
     </div>
     <h2 v-if="outboundDetail">List Barang</h2>
