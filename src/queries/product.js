@@ -9,6 +9,15 @@ export const fetchProducts = async () => {
     throw err
   }
 }
+export const fetchAnalytics = async () => {
+  try {
+    const response = await axiosInstance.get('/api/analytic')
+    return response.data
+  } catch (err) {
+    console.error(err.toString())
+    throw err
+  }
+}
 
 export const getProdukDetail = async (id) => {
   try {
