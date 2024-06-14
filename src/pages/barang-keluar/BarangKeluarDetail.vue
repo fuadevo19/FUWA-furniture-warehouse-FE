@@ -17,15 +17,16 @@
         <li>JNT</li>
         <li>Marketplace</li>
         <li>
-          <div class="dropdown">
-            <div
-              tabindex="0"
-              role="button"
-              :class="getStatusClass(outboundDetail.status)"
+          <div :class="getStatusClass(selectedStatus)">
+            <select
+              v-model="selectedStatus"
               class="font-normal border-2 rounded-md px-2 border-slate-300"
             >
-              {{ outboundDetail.status }}
-            </div>
+              <option value="Ready to Pick">Ready to Pick</option>
+              <option value="On Delivery">On Delivery</option>
+              <option value="Delivered">Delivered</option>
+              <option value="In Review">In Review</option>
+            </select>
           </div>
         </li>
       </ul>
@@ -73,29 +74,31 @@
       <h3 class="font-normal text-sm">
         Note: Status tidak bisa diubah menjadi approved jika terdapat barang dengan stok habis
       </h3>
-      <button class="btn btn-md btn-secondary">Update Status</button>
+      <button class="btn btn-md btn-secondary" @click="updateStatus">Update Status</button>
     </div>
   </div>
 </template>
 
 <script>
 import { outbound } from '@/queries/outbound'
+import { toast } from 'vue3-toastify'
 
 export default {
   data() {
     return {
-      outboundDetail: null
+      outboundDetail: null,
+      selectedStatus: ''
     }
   },
   methods: {
     getStatusClass(status) {
       const classMap = {
-        in_review: 'text-red-500',
-        delivered: 'text-green-500',
-        on_delivery: 'text-blue-500',
-        ready_to_pick: 'text-yellow-500'
+        'Ready to Pick': 'text-[#787303]',
+        'On Delivery': 'text-[#032478]',
+        Delivered: 'text-[#17BA14]',
+        'In Review': 'text-[#D62424]'
       }
-      return classMap[status.toLowerCase()] || 'text-gray-500'
+      return classMap[status] || 'text-gray-500'
     },
     formatDate(dateStr) {
       const date = new Date(dateStr)
@@ -106,8 +109,22 @@ export default {
       try {
         const data = await outbound.getById(outboundId)
         this.outboundDetail = data
+        this.selectedStatus = data.status
       } catch (error) {
         console.error('Error fetching outbound details:', error)
+      }
+    },
+    async updateStatus() {
+      try {
+        await outbound.updateStatus(this.outboundDetail.id, { status: this.selectedStatus })
+        toast.success('Status updated successfully', {
+          onClose: () => {
+            window.location.replace('/barang-keluar')
+          }
+        })
+      } catch (error) {
+        console.error('Error updating status:', error)
+        toast.error('Failed to update status')
       }
     }
   },
