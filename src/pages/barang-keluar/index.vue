@@ -14,8 +14,7 @@
             <th>No</th>
             <th>Tanggal Waktu</th>
             <th>Outbound ID</th>
-            <th>Source</th>
-            <th>Customer ID</th>
+            <th>Customer Name</th>
             <th>Status</th>
             <th>Action</th>
           </tr>
@@ -25,8 +24,7 @@
             <th>{{ index + 1 }}</th>
             <td>{{ item.datetime }}</td>
             <td>{{ item.id }}</td>
-            <td>Marketplace</td>
-            <td>{{ item.customer_id }}</td>
+            <td>{{ item.customer_name }}</td>
             <td>
               <div :class="getStatusClasses(item.status)">{{ item.status }}</div>
             </td>

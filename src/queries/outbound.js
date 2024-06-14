@@ -30,6 +30,15 @@ export const outbound = {
       console.error(err.toString())
       throw err
     }
+  },
+  updateStatus: async (id, status) => {
+    try {
+      const response = await axiosInstance.patch(`/api/outbound/${id}`, status)
+      return response.data
+    } catch (err) {
+      console.error(err.toString())
+      throw err
+    }
   }
 }
 
