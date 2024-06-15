@@ -22,10 +22,15 @@
               v-model="selectedStatus"
               class="font-normal border-2 rounded-md px-2 border-slate-300"
             >
-              <option value="Ready to Pick">Ready to Pick</option>
-              <option value="On Delivery">On Delivery</option>
-              <option value="Delivered">Delivered</option>
-              <option value="In Review">In Review</option>
+              <option :disabled="outboundDetail.status !== 'In Review'" value="Ready to Pick">
+                Ready to Pick
+              </option>
+              <option :disabled="outboundDetail.status !== 'On Delivery'" value="Delivered">
+                Delivered
+              </option>
+              <option :disabled="outboundDetail.status === 'Ready to Pick'" value="In Review">
+                In Review
+              </option>
             </select>
           </div>
         </li>
