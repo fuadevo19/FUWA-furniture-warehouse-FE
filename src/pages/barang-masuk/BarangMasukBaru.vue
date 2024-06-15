@@ -2,7 +2,6 @@
 import { ref, toRaw, watch } from 'vue'
 import Step1 from './Step1.vue'
 import Step2 from './Step2.vue'
-import Step3 from './Step3.vue'
 import { useBarangMasukStore } from '@/stores/barang-masuk'
 import { storeToRefs } from 'pinia'
 
@@ -12,7 +11,7 @@ const store = useBarangMasukStore()
 const { data } = storeToRefs(store)
 
 const nextStep = () => {
-  if (currentStep.value < 2) {
+  if (currentStep.value < 1) {
     currentStep.value++
   } else {
     store.submitInbound()
@@ -42,7 +41,6 @@ const disableForm = (state) => {
 
     <Step1 v-if="currentStep === 0" />
     <Step2 v-else-if="currentStep === 1" />
-    <Step3 v-else-if="currentStep === 2" />
 
     <div>
       <div class="w-fit ml-auto">
@@ -50,7 +48,7 @@ const disableForm = (state) => {
           @click="nextStep"
           :class="`btn btn-md btn-secondary mt-10 ${disableForm(data) && ' btn-disabled'}`"
         >
-          {{ currentStep === 2 ? 'Submit' : 'Selanjutnya' }}
+          {{ currentStep === 1 ? 'Submit' : 'Selanjutnya' }}
         </button>
       </div>
     </div>

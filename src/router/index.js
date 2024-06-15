@@ -7,6 +7,7 @@ import BarangKeluar from '@/pages/barang-keluar/index.vue'
 import BarangKeluarBaru from '@/pages/barang-keluar/BarangKeluarBaru.vue'
 import BarangKeluarBaruDetail from '@/pages/barang-keluar/BarangKeluarBaruDetail.vue'
 import BarangKeluarDetail from '@/pages/barang-keluar/BarangKeluarDetail.vue'
+import PrintLabel from '@/pages/barang-keluar/PrintLabel.vue'
 import BarangKeluarSuratJalan from '@/pages/barang-keluar/SuratJalan.vue'
 import Example from '@/pages/Example.vue'
 import DetailProduk from '@/pages/produk/DetailProduk.vue'
@@ -66,6 +67,11 @@ const router = createRouter({
       path: '/barang-keluar',
       name: 'barangkeluar',
       component: BarangKeluar
+    },
+    {
+      path: '/barang-keluar/print-label',
+      name: 'printlabel',
+      component: PrintLabel
     },
     {
       path: '/barang-keluar/new',

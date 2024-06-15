@@ -79,7 +79,8 @@
         </tbody>
       </table>
     </div>
-    <div class="w-fit ml-auto">
+    <div class="w-fit flex gap-4 ml-auto">
+      <a href="/barang-keluar/print-label" class="btn btn-md btn-secondary mt-10">Print Label</a>
       <button class="btn btn-md btn-secondary mt-10" @click="submitOutbound">Simpan</button>
     </div>
   </div>
@@ -127,6 +128,9 @@ export default {
           alert('Stok produk tidak mencukupi')
         }
       }
+      showModal.value = false
+      quantity.value = 0
+      selectedProduct.value = null
     }
 
     const removeItem = (index) => {

@@ -36,19 +36,6 @@
             </td>
           </tr>
         </tbody>
-        <tfoot>
-          <tr>
-            <th>#</th>
-            <th>Nama Barang</th>
-            <th>Deskripsi</th>
-            <th>SKU</th>
-            <th>Ukuran</th>
-            <th>Berat</th>
-            <th>Zone</th>
-            <th>Stok</th>
-            <th>Action</th>
-          </tr>
-        </tfoot>
       </table>
     </div>
   </div>

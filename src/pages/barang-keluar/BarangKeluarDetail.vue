@@ -113,6 +113,7 @@ export default {
       } catch (error) {
         console.error('Error fetching outbound details:', error)
       }
+      console.log(this.selectedStatus)
     },
     async updateStatus() {
       try {

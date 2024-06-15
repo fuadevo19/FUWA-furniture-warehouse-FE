@@ -1,10 +1,10 @@
 <script setup>
 import { ref } from 'vue'
 import QrcodeVue from 'qrcode.vue'
-import { useBarangMasukStore } from '@/stores/barang-masuk'
 import { storeToRefs } from 'pinia'
+import { useBarangKeluarStore } from '@/stores/barang-keluar'
 
-const store = useBarangMasukStore()
+const store = useBarangKeluarStore()
 const { data } = storeToRefs(store)
 
 const printableContent = ref(null)
