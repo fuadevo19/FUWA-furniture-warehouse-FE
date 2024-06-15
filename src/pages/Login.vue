@@ -28,8 +28,6 @@ const handleSubmit = async (event) => {
       toast('Login success', {
         type: 'success'
       })
-
-      window.location.replace('/')
     } catch (error) {
       if (error.response.status === 401) {
         toast('invalid username or password', {

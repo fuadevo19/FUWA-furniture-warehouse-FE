@@ -5,7 +5,9 @@ export const login = async (payload) => {
     const response = await axiosInstance.post('/auth/login', payload)
     if (response.data.token) {
       localStorage.setItem('token', response.data.token)
+      localStorage.setItem('username', response.data.username)
       setAuthHeader(response.data.token)
+      window.location.replace('/')
     }
   } catch (err) {
     console.error(err.toString())
@@ -15,10 +17,9 @@ export const login = async (payload) => {
 
 export const logout = async () => {
   try {
-    localStorage.removeItem('token')
+    localStorage.clear()
     setAuthHeader(null)
     window.location.replace('/login')
-    window.location.reload()
   } catch (err) {
     console.error(err.toString())
     throw err

@@ -27,12 +27,6 @@
           >
             <img :src="iconBarangKeluar" alt="icon-nav" class="mr-[16px]" />Barang Keluar
           </RouterLink>
-          <RouterLink class="flex items-center p-3 rounded hover:bg-[#F4EFFD]" :to="{ name: '' }"
-            ><img :src="iconLacak" alt="icon-nav" class="mr-[16px]" />Lacak Pengiriman</RouterLink
-          >
-          <RouterLink class="flex items-center p-3 rounded hover:bg-[#F4EFFD]" :to="{ name: '' }"
-            ><img :src="iconStockOpname" alt="icon-nav" class="mr-[16px]" />Stock Opname</RouterLink
-          >
         </nav>
       </div>
       <div class="sidebar-bottom mb-4">
@@ -48,8 +42,7 @@
             alt="profile"
           />
           <div>
-            <h2 class="text-xs">John Doe</h2>
-            <h2 class="text-xs text-[#71839B]">johndoe@gmail.com</h2>
+            <h2 class="text-lg">{{ username }}</h2>
           </div>
         </div>
       </div>
@@ -81,7 +74,8 @@ export default {
       iconStockOpname,
       iconPengaturan,
       iconKeluar,
-      isPublic
+      isPublic,
+      username: localStorage.getItem('username')
     }
   },
   methods: {
