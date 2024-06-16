@@ -124,7 +124,7 @@ export default {
     },
     formatDate(dateStr) {
       const date = new Date(dateStr)
-      return format(date, 'dd MMMM yyyy HH:mm:ss')
+      return format(date, 'dd MMMM yyyy')
     },
     async fetchOutboundDetails() {
       const outboundId = this.$route.query.id
