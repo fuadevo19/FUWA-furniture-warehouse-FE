@@ -71,7 +71,7 @@ export default {
         .then((response) => {
           this.outbound = response.map((item) => ({
             ...item,
-            datetime: format(new Date(item.datetime), 'dd MMMM yyyy HH:mm:ss')
+            datetime: format(new Date(item.datetime), 'dd MMMM yyyy')
           }))
         })
         .catch((error) => {
