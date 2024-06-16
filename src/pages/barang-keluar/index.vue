@@ -43,6 +43,7 @@
 </template>
 
 <script>
+import { format } from 'date-fns'
 import { outbound } from '@/queries/outbound'
 
 export default {
@@ -68,7 +69,10 @@ export default {
       outbound
         .getAll()
         .then((response) => {
-          this.outbound = response
+          this.outbound = response.map((item) => ({
+            ...item,
+            datetime: format(new Date(item.datetime), 'dd MMMM yyyy HH:mm:ss')
+          }))
         })
         .catch((error) => {
           console.error('Error fetching outbound data:', error)

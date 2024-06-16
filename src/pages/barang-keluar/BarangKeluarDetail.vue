@@ -28,7 +28,10 @@
               <option :disabled="outboundDetail.status !== 'On Delivery'" value="Delivered">
                 Delivered
               </option>
-              <option :disabled="outboundDetail.status === 'Ready to Pick'" value="In Review">
+              <option :disabled="outboundDetail.status !== 'On Delivery'" value="On Delivery">
+                On Delivery
+              </option>
+              <option :disabled="outboundDetail.status !== 'In Review'" value="In Review">
                 In Review
               </option>
             </select>
@@ -79,14 +82,28 @@
       <h3 class="font-normal text-sm">
         Note: Status tidak bisa diubah menjadi approved jika terdapat barang dengan stok habis
       </h3>
-      <button class="btn btn-md btn-secondary" @click="updateStatus">Update Status</button>
+      <button
+        v-if="selectedStatus !== 'Ready to Pick'"
+        class="btn btn-md btn-secondary"
+        @click="updateStatus"
+      >
+        Update Status
+      </button>
+      <button
+        v-if="selectedStatus === 'Ready to Pick'"
+        class="btn btn-md btn-secondary"
+        @click="navigateToSuratJalan"
+      >
+        Surat Jalan
+      </button>
     </div>
   </div>
 </template>
 
 <script>
-import { outbound } from '@/queries/outbound'
+import { format } from 'date-fns'
 import { toast } from 'vue3-toastify'
+import { outbound } from '@/queries/outbound'
 
 export default {
   data() {
@@ -107,18 +124,20 @@ export default {
     },
     formatDate(dateStr) {
       const date = new Date(dateStr)
-      return date.toLocaleDateString() + ' ' + date.toLocaleTimeString()
+      return format(date, 'dd MMMM yyyy HH:mm:ss')
     },
     async fetchOutboundDetails() {
       const outboundId = this.$route.query.id
       try {
         const data = await outbound.getById(outboundId)
-        this.outboundDetail = data
+        this.outboundDetail = {
+          ...data,
+          datetime: this.formatDate(data.datetime)
+        }
         this.selectedStatus = data.status
       } catch (error) {
         console.error('Error fetching outbound details:', error)
       }
-      console.log(this.selectedStatus)
     },
     async updateStatus() {
       try {
@@ -131,6 +150,16 @@ export default {
       } catch (error) {
         console.error('Error updating status:', error)
         toast.error('Failed to update status')
+      }
+    },
+    navigateToSuratJalan() {
+      if (this.outboundDetail && this.outboundDetail.id) {
+        this.$router.push({
+          path: '/barang-keluar/surat-jalan',
+          query: { id: this.outboundDetail.id }
+        })
+      } else {
+        console.error('Outbound detail is not available')
       }
     }
   },
