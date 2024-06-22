@@ -103,7 +103,7 @@ router.beforeEach((to) => {
     // ❗️ Avoid an infinite redirect
     to.path !== '/login'
   ) {
-    // redirect the user to the login page
+    window.location.replace('login')
     return { name: 'login' }
   }
 })
