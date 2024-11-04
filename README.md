@@ -1,5 +1,5 @@
 # Fuwa-MS-Dashboard
-
+Pembuatan aplikasi FUWA (Furniture Warehouse) bertujuan untuk mempermudah manajemen laporan arus barang masuk dan keluar di gudang. Proyek ini merupakan tugas akhir dalam program MSIB bersama mitra Stechoq Academy, dalam course bertajuk "Full-Stack Specialist in Industry 4.0 for Manufacturing Industry." Aplikasi ini berhasil diselesaikan dengan predikat excellent.
 ## Table of Contents
 
 - [How to Run](#how-to-run)
